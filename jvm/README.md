@@ -1,5 +1,7 @@
 # Basic Testing Techniques (JVM)
 
+![workflow badge](https://github.com/metaphori/testing-basic-techniques/actions/workflows/workflow.yml/badge.svg)
+
 ## Project setup
 
 **`gradle init`**
