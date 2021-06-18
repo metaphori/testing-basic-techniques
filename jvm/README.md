@@ -38,6 +38,22 @@ Source package (default: testing.basics): it.unibo.testlecture
 
 ```
 
+## Units
+
+### Unit 01 - Introduction to software testing
+
+- Consider package: `it.unibo.testlecture.u01_intro`
+- Consider `NumFinder`
+- Consider `AutomaticTest1`
+- Now let's separate the "main" application from the "test" code
+- Consider `AutomaticTest2`
+- Consider `AutomaticTest3`
+- Now, let's use a test automation framework (like JUnit)
+- Consider the revised SUT `MinMaxFinder`
+- Consider `MinMaxFinderTest`
+- We can still improve it: consider `MinMaxFinderParameterizedTest`
+- You can run tests as follows: `./gradlew test --rerun-tasks`
+
 ## Contacts
 
 - Roberto Casadei, roby [dot] casadei [at] unibo [dot] it
