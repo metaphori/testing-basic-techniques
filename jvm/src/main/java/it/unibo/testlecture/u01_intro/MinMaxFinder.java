@@ -11,7 +11,7 @@ import java.util.Scanner;
  * Improves over NumFinder
  */
 public class MinMaxFinder {
-    public Optional<ImmutablePair<Integer,Integer>> find(int[] numbers){
+    public static Optional<ImmutablePair<Integer,Integer>> find(int[] numbers){
         if(numbers == null) return Optional.empty();
 
         Optional<Integer> smallest = Optional.empty();

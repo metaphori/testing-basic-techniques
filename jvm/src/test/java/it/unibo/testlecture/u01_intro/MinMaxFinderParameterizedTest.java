@@ -16,9 +16,7 @@ public class MinMaxFinderParameterizedTest {
     @ParameterizedTest(name = "[{index}] {2}")
     @MethodSource("minMaxFinderTestCases")
     public void test_empty_array(int[] inputs, Optional<ImmutablePair<Integer,Integer>> expected, String name){
-        MinMaxFinder sut = new MinMaxFinder();
-        Optional<ImmutablePair<Integer,Integer>> actual = sut.find(inputs);
-        assertEquals(expected, actual);
+        assertEquals(expected, MinMaxFinder.find(inputs));
     }
 
     private static Stream<Arguments> minMaxFinderTestCases(){
