@@ -8,7 +8,7 @@ jobs:
       strategy:
         fail-fast: false
         matrix:
-          dotnet-version: ['5.0.x', '3.0', '3.1.x']
+          dotnet-version: ['5.0.x'] # , '3.0', '3.1.x'] # https://docs.microsoft.com/en-us/dotnet/standard/frameworks#how-to-specify-a-target-framework
       defaults:
         run:
           working-directory: ./dotnet
