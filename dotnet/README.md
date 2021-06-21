@@ -1,20 +1,17 @@
-# Basic Testing Techniques
+# Basic Testing Techniques (.NET Core)
 
-## Contents
+## Project setup
 
-- Introduction to software testing and related activities
-- Panorama of software testing
-- Unit testing
-- Test-driven development
-- Acceptance testing
+```
+dotnet new sln --name testing-basics
+dotnet new classlib -n u02-unit-testing
+dotnet build u02-unit-testing
+dotnet new xunit -n test-u02-unit-testing
+dotnet add test-u02-unit-testing reference u02-unit-testing
+dotnet test test-u02-unit-testing
+```
 
-## Testing on the JVM
-
-Follow the [jvm/ subtree](jvm/).
-
-## Testing on .NET
-
-Follow the [dotnet/ subtree](dotnet/).
+## Units
 
 ## Contacts
 
