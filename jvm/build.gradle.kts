@@ -25,7 +25,7 @@ dependencies {
     val junitPlatformVersion = "1.7.2"
     val vintageVersion = "5.4.2"
 
-    // This dependency is used by the application.
+    // These dependencies is used by the application.
     implementation("org.apache.commons:commons-lang3:3.12.0")
     implementation("com.google.guava:guava:27.1-jre")
 
@@ -33,7 +33,7 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:$jupiterVersion")
     testImplementation("org.junit.jupiter:junit-jupiter-params:$jupiterVersion")
     testImplementation("org.junit.platform:junit-platform-suite-api:$junitPlatformVersion") // @SelectClasses
-    testImplementation("org.junit.platform:junit-platform-runner:$junitPlatformVersion")
+    testImplementation("org.junit.platform:junit-platform-runner:$junitPlatformVersion") // RunWith, JUnitPlatform runner
 
     // Use JUnit Jupiter Engine for testing.
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$jupiterVersion")
