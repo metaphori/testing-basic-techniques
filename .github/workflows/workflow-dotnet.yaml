@@ -1,5 +1,7 @@
 name: workflow dotnet
-on: [push]
+on:
+  push:
+    paths: 'dotnet/**'
 jobs:
   run-tests:
       runs-on: ubuntu-latest
