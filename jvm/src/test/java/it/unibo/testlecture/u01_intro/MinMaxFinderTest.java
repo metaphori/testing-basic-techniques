@@ -1,11 +1,11 @@
 package it.unibo.testlecture.u01_intro;
 
 import org.apache.commons.lang3.tuple.ImmutablePair;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MinMaxFinderTest {
 
