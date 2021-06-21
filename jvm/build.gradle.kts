@@ -21,17 +21,23 @@ repositories {
 }
 
 dependencies {
+    val jupiterVersion = "5.4.2"
+    val junitPlatformVersion = "1.7.2"
+    val vintageVersion = "5.4.2"
+
     // This dependency is used by the application.
     implementation("org.apache.commons:commons-lang3:3.12.0")
     implementation("com.google.guava:guava:27.1-jre")
 
     // Use JUnit Jupiter API for testing.
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.4.2")
-    testImplementation("org.junit.jupiter:junit-jupiter-params:5.4.2")
-
+    testImplementation("org.junit.jupiter:junit-jupiter-api:$jupiterVersion")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:$jupiterVersion")
+    testImplementation("org.junit.platform:junit-platform-suite-api:$junitPlatformVersion") // @SelectClasses
+    testImplementation("org.junit.platform:junit-platform-runner:$junitPlatformVersion")
 
     // Use JUnit Jupiter Engine for testing.
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.4.2")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$jupiterVersion")
+    testRuntimeOnly("org.junit.vintage:junit-vintage-engine:$vintageVersion")
 }
 
 application {
@@ -40,8 +46,11 @@ application {
 }
 
 val test by tasks.getting(Test::class) {
-    // Use junit platform for unit tests
-    useJUnitPlatform()
+    // useJUnit() // JUnit 4 runner infrastructure
+    // useJUnitPlatform() // enable JUnit Platform (aka JUnit 5) support
+    // useJUnitPlatform { includeEngines("junit-vintage")  } // JUnit 4 tests on JUnit Platform
+    useJUnitPlatform { includeEngines("junit-vintage", "junit-jupiter")  } // JUnit 4 + JUnit 5
+
     testLogging.events("failed","passed","skipped")
     // https://github.com/junit-team/junit5/issues/2041
     // Workaround to show display name of parameterized tests
@@ -50,3 +59,7 @@ val test by tasks.getting(Test::class) {
         println("\n${test.className} [${test.classDisplayName}] > ${test.name}\n${test.displayName}\n${result.resultType}")
     }))
 }
+
+// ./gradlew test --rerun-tasks
+// https://docs.gradle.org/current/userguide/java_testing.html#test_filtering
+// ./gradlew test --tests  it.unibo.testlecture.u02_unit.AppliancesTestSuite
