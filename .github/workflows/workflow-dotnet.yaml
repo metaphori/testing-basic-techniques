@@ -1,4 +1,4 @@
-name: workflow
+name: workflow dotnet
 on: [push]
 jobs:
   run-tests:
@@ -6,11 +6,11 @@ jobs:
       strategy:
         matrix:
           dotnet-version: ['3.0', '3.1.x', '5.0.x']
+      defaults:
+        run:
+          working-directory: ./dotnet
       steps:
         - uses: actions/checkout@v2
-        - run: |
-            cd jvm
-            ./gradlew test
         - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
           uses: actions/setup-dotnet@v1.7.2
           with:
