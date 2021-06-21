@@ -1,7 +1,7 @@
 name: workflow jvm
 on:
   push:
-    paths: 'jvm/**'
+    paths: ['.github/**','jvm/**']
 jobs:
   run-tests:
       runs-on: ubuntu-latest
