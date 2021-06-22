@@ -1,6 +1,6 @@
 # Basic Testing Techniques (JVM)
 
-![workflow badge](https://github.com/metaphori/testing-basic-techniques/actions/workflows/workflow.yaml/badge.svg)
+![workflow-jvm badge](https://github.com/metaphori/testing-basic-techniques/actions/workflows/workflow-jvm.yaml/badge.svg)
 
 ## Project setup
 

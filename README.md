@@ -1,5 +1,9 @@
 # Basic Testing Techniques
 
+![workflow-jvm badge](https://github.com/metaphori/testing-basic-techniques/actions/workflows/workflow-jvm.yaml/badge.svg)
+![workflow-dotnet badge](https://github.com/metaphori/testing-basic-techniques/actions/workflows/workflow-dotnet.yaml/badge.svg)
+
+
 ## Contents
 
 - Introduction to software testing and related activities

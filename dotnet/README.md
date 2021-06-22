@@ -1,5 +1,8 @@
 # Basic Testing Techniques (.NET Core)
 
+![workflow-dotnet badge](https://github.com/metaphori/testing-basic-techniques/actions/workflows/workflow-dotnet.yaml/badge.svg)
+
+
 ## Project setup
 
 ```
