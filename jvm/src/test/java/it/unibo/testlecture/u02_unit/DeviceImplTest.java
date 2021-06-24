@@ -1,6 +1,8 @@
 package it.unibo.testlecture.u02_unit;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -15,6 +17,7 @@ public class DeviceImplTest {         // Test suite
     }
 
     @Test
+    @Tags({ @Tag("basics"), @Tag("appliances") })
     public void test_turning_on_when_off() throws Exception {
         assumeTrue(!this.device.isOn());  // Assumption
         this.device.on();                 // (2. Act)

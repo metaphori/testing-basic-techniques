@@ -38,6 +38,9 @@ dependencies {
     // Use JUnit Jupiter Engine for testing.
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$jupiterVersion")
     testRuntimeOnly("org.junit.vintage:junit-vintage-engine:$vintageVersion")
+
+    testImplementation("org.slf4j:slf4j-api:1.7.+")
+    testRuntimeOnly("org.slf4j:slf4j-log4j12:1.7.+")
 }
 
 application {
@@ -49,7 +52,10 @@ val test by tasks.getting(Test::class) {
     // useJUnit() // JUnit 4 runner infrastructure
     // useJUnitPlatform() // enable JUnit Platform (aka JUnit 5) support
     // useJUnitPlatform { includeEngines("junit-vintage")  } // JUnit 4 tests on JUnit Platform
-    useJUnitPlatform { includeEngines("junit-vintage", "junit-jupiter")  } // JUnit 4 + JUnit 5
+    useJUnitPlatform {
+        includeEngines("junit-vintage", "junit-jupiter")  // JUnit 4 + JUnit 5
+        excludeTags("meta")
+    }
 
     testLogging.events("failed","passed","skipped")
     // https://github.com/junit-team/junit5/issues/2041
@@ -58,6 +64,15 @@ val test by tasks.getting(Test::class) {
         val test = descriptor as org.gradle.api.internal.tasks.testing.TestDescriptorInternal
         println("\n${test.className} [${test.classDisplayName}] > ${test.name}\n${test.displayName}\n${result.resultType}")
     }))
+}
+
+tasks.register("metatest", Test::class) {
+    useJUnitPlatform {
+        includeEngines("junit-vintage", "junit-jupiter")  // JUnit 4 + JUnit 5
+        includeTags("meta")
+    }
+
+    testLogging.events("failed","passed","skipped")
 }
 
 // ./gradlew test --rerun-tasks
