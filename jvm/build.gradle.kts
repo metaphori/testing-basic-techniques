@@ -58,11 +58,23 @@ val test by tasks.getting(Test::class) {
     }
 
     testLogging.events("failed","passed","skipped")
+}
+
+tasks.register("paramtests", Test::class) {
+    // useJUnit() // JUnit 4 runner infrastructure
+    // useJUnitPlatform() // enable JUnit Platform (aka JUnit 5) support
+    // useJUnitPlatform { includeEngines("junit-vintage")  } // JUnit 4 tests on JUnit Platform
+    useJUnitPlatform {
+        includeEngines("junit-vintage", "junit-jupiter")  // JUnit 4 + JUnit 5
+        excludeTags("meta")
+    }
+
+    testLogging.events("failed","passed","skipped")
     // https://github.com/junit-team/junit5/issues/2041
     // Workaround to show display name of parameterized tests
     afterTest(KotlinClosure2<TestDescriptor, TestResult, Any>({ descriptor, result ->
         val test = descriptor as org.gradle.api.internal.tasks.testing.TestDescriptorInternal
-        println("\n${test.className} [${test.classDisplayName}] > ${test.name}\n${test.displayName}\n${result.resultType}")
+        println("${test.className} [${test.classDisplayName}] > ${test.name}\n${test.displayName}\n${result.resultType}")
     }))
 }
 

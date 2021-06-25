@@ -8,19 +8,40 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
-public class DeviceImplTest {         // Test suite
-    private Device device;              // Fixture
+// Test suite
+public class DeviceImplTest {
+    // Fixture
+    private Device device;
 
     @BeforeEach
-    public void init(){                 // (1. Arrange)
-        this.device = new DeviceImpl();   // Fixture setup
+    public void init(){
+        // Fixture setup (Arrange)
+        device = new DeviceImpl();
     }
 
     @Test
     @Tags({ @Tag("basics"), @Tag("appliances") })
-    public void test_turning_on_when_off() throws Exception {
-        assumeTrue(!this.device.isOn());  // Assumption
-        this.device.on();                 // (2. Act)
-        assertTrue(this.device.isOn());   // (3. Assert)
+    public void test_turning_on_when_off() {
+        assumeTrue(!device.isOn());
+
+        // Act
+        device.on();
+
+        // Assert
+        assertTrue(device.isOn());
+    }
+
+    @Test
+    @Tags({ @Tag("basics"), @Tag("appliances") })
+    public void test_turning_off_when_on() {
+        // Arrange
+        device.on();
+        assumeTrue(device.isOn());
+
+        // Act
+        device.on();
+
+        // Assert
+        assertTrue(device.isOn());
     }
 }

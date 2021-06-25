@@ -41,4 +41,9 @@ public class MetaTestAssertions {
     public void test_to_ignore(){
         fail();
     }
+
+    @Test
+    public void failing_test(){
+        fail();
+    }
 }
