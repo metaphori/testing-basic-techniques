@@ -42,7 +42,7 @@ public class MetaTestAssertions {
         fail();
     }
 
-    @Test
+    @Test @Disabled
     public void failing_test(){
         fail();
     }

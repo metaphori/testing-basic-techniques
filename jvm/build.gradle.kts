@@ -12,6 +12,9 @@ plugins {
 
     // Apply the application plugin to add support for building a CLI application
     application
+
+    // JaCoCo plugin for test coverage
+    jacoco
 }
 
 repositories {
