@@ -14,6 +14,5 @@ jobs:
           uses: codecov/codecov-action@v1
           with:
             token: ${{ secrets.CODECOV_TOKEN }}
-            files: ./jacocoTestReport.xml
-            directory: ./jvm/build/reports/jacoco/test/
+            files: ./jvm/build/reports/jacoco/test/jacocoTestReport.xml
             verbose: true
