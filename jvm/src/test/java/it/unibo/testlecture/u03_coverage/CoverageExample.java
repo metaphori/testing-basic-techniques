@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class CoverageExample {
 
+    // ./gradlew test --tests it.unibo.testlecture.u03_coverage.CoverageExample.condition_coverage
     @Test
     public void condition_coverage(){
         // To cover all the conditions, just ensure that each one takes a different value

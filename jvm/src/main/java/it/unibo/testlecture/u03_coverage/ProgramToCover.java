@@ -8,6 +8,6 @@ public class ProgramToCover {
     if(c3 || c4) System.out.print("E"); else System.out.print("F");
     System.out.print("G");
     if(c5) System.out.print("H");
-    for(int j = 1; j <= k; j++) System.out.print(j);
+    // for(int j = 1; j <= k; j++) System.out.print(j);
   }
 }

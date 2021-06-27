@@ -93,3 +93,9 @@ tasks.register("metatest", Test::class) {
 // ./gradlew test --rerun-tasks
 // https://docs.gradle.org/current/userguide/java_testing.html#test_filtering
 // ./gradlew test --tests  it.unibo.testlecture.u02_unit.AppliancesTestSuite
+
+tasks.jacocoTestReport {
+    reports {
+        xml.required.set(true)
+    }
+}
