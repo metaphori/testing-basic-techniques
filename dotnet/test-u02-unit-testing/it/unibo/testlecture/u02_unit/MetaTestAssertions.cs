@@ -25,7 +25,7 @@ namespace it.unibo.testlecture.u02_unit_testing
         [CustomIgnoreFact]
         public void Test_To_Ignore(){ /* ... */ }
 
-        [Fact] [CustomIgnoreFact]
+        // [Fact] 
         public void Test_Failing(){ 
             throw new Xunit.Sdk.XunitException("This test must fail");
          }
