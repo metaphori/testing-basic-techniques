@@ -1,6 +1,7 @@
 package it.unibo.testlecture.u04_tdd;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class DeviceManagerImpl implements DeviceManager {
@@ -17,6 +18,6 @@ public class DeviceManagerImpl implements DeviceManager {
 
     @Override
     public List<Device> managedDevices() {
-        return List.copyOf(devices);
+        return Collections.unmodifiableList(devices);
     }
 }
