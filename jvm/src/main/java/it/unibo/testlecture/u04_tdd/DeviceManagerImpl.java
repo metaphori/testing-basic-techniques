@@ -12,11 +12,11 @@ public class DeviceManagerImpl implements DeviceManager {
 
     @Override
     public void addDevice(Device d) {
-
+        devices.add(d);
     }
 
     @Override
     public List<Device> managedDevices() {
-        return null;
+        return devices;
     }
 }
