@@ -17,6 +17,6 @@ public class DeviceManagerImpl implements DeviceManager {
 
     @Override
     public List<Device> managedDevices() {
-        return devices;
+        return List.copyOf(devices);
     }
 }
