@@ -10,6 +10,12 @@ public class AutomaticTest3 {
         }
 
         numFinder = new NumFinder();
+        numFinder.find(null);
+        if(!(numFinder.getSmallest() == Integer.MAX_VALUE && numFinder.getLargest() == Integer.MIN_VALUE)){
+            System.out.println("Test Case #1b failed");
+        }
+
+        numFinder = new NumFinder();
         int[] input2 = new int[]{ 10, 20, 30 };
         numFinder.find(input2);
         if(!(numFinder.getSmallest() == 10 && numFinder.getLargest() == 30)){
