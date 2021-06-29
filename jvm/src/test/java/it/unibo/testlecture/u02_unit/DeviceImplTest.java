@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 // Test suite
@@ -39,9 +39,9 @@ public class DeviceImplTest {
         assumeTrue(device.isOn());
 
         // Act
-        device.on();
+        device.off();
 
         // Assert
-        assertTrue(device.isOn());
+        assertFalse(device.isOn());
     }
 }
