@@ -56,6 +56,28 @@ Source package (default: testing.basics): it.unibo.testlecture
 - We can still improve it: consider `MinMaxFinderParameterizedTest`
 - You can run tests as follows: `./gradlew test --rerun-tasks`
 
+### Unit 02 - Testing basics in JUnit 5
+
+- Exercise
+    - Analyse `AccountHolder`, `BankAccount` and `SimpleBankAccount`
+    - Analyse and run the proposed test: `SimpleBankAccountTest`
+    - Implement a new version of a bank account, allowing the deposit and
+      the withdraw using also the ATM. Each transaction done with the
+      ATM implies paying a 1$ fee.
+          - The new bank account must implements the BankAccount interface and coded into a new class SimpleBankAccountWithAtm
+          - It is requested to provide a new test class for the new bank account ( `SimpleBankAccountWithAtmTest` )
+    - Apply the DRY principle to refactor the written code, avoiding repetitions of code
+          -This principle must be applied both to classes and tests.
+
+### Unit 03 - Coverage
+
+- See `ProgramToCover` and test `CoverageExample`
+
+### Unit 04 - TDD
+
+- Exercise
+    - following the TDD approach, provide an implementation for the CircularList interface
+
 ## Contacts
 
 - Roberto Casadei, roby [dot] casadei [at] unibo [dot] it

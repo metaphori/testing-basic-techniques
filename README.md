@@ -9,8 +9,15 @@
 - Introduction to software testing and related activities
 - Panorama of software testing
 - Unit testing
+- Coverage
 - Test-driven development
-- Acceptance testing
+
+## Download this repository
+
+```
+$ git clone git@github.com:metaphori/testing-basic-techniques.git # (SSH)
+$ git clone https://github.com/metaphori/testing-basic-techniques.git # HTTPS
+```
 
 ## Testing on the JVM
 
