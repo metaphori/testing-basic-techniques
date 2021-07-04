@@ -42,6 +42,12 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$jupiterVersion")
     testRuntimeOnly("org.junit.vintage:junit-vintage-engine:$vintageVersion")
 
+    testImplementation("org.mockito:mockito-core:3.+")
+
+    testImplementation("io.cucumber:cucumber-java:2.0.1")
+    // N.B.: Cucumber is based on JUnit 4. If you’re using JUnit 5, remember to include junit-vintage-engine dependency, as well.
+    testImplementation("io.cucumber:cucumber-junit:2.4.0") // needed for runner (cucumber.api.junit.Cucumber)
+
     testImplementation("org.slf4j:slf4j-api:1.7.+")
     testRuntimeOnly("org.slf4j:slf4j-log4j12:1.7.+")
 }
