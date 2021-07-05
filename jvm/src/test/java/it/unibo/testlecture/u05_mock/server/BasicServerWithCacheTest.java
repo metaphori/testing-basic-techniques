@@ -51,9 +51,11 @@ public class BasicServerWithCacheTest {
                 req -> null // DUMMY
         );
 
-        sut.serve(request);
-        sut.serve(request);
+        Response r1 = sut.serve(request);
+        Response r2 = sut.serve(request);
 
+        assertEquals(null, r1);
+        assertEquals(response, r2);
         InOrder inOrder = inOrder(cacheMock);
         inOrder.verify(cacheMock).cached(request);
         inOrder.verify(cacheMock).put(eq(request), any());
@@ -61,6 +63,33 @@ public class BasicServerWithCacheTest {
         inOrder.verify(cacheMock).get(request);
         inOrder.verifyNoMoreInteractions();
     }
+
+    @Test
+    public void Test_Server_Interaction_with_Cache_for_Cacheables_2(){
+        Request request = new Request("foo");
+        Response response = Response.of("foobar");
+        Cache<Request, Response> cacheMock = mock(Cache.class);
+        when(cacheMock.cached(request)).thenReturn(false).thenReturn(true);
+        when(cacheMock.get(request)).thenReturn(response);
+        Server sut = new BasicServerWithCache(
+                cacheMock, // MOCK
+                req -> true, // STUB
+                req -> response // DUMMY
+        );
+
+        Response r1 = sut.serve(request);
+        Response r2 = sut.serve(request);
+
+        assertEquals(response, r1);
+        assertEquals(response, r2);
+        InOrder inOrder = inOrder(cacheMock);
+        inOrder.verify(cacheMock).cached(request);
+        inOrder.verify(cacheMock).put(eq(request), eq(response));
+        inOrder.verify(cacheMock).cached(request);
+        inOrder.verify(cacheMock).get(request);
+        inOrder.verifyNoMoreInteractions();
+    }
+
 
     @Test
     public void Test_Server_Interaction_with_Cache_for_Cacheables_via_Spy(){
@@ -81,6 +110,24 @@ public class BasicServerWithCacheTest {
         inOrder.verify(cacheSpy).cached(request);
         inOrder.verify(cacheSpy).get(request);
         inOrder.verifyNoMoreInteractions();
+    }
+
+    @Test
+    public void Test_Server_With_Cache_For_Cached_Objects(){
+        Request request = new Request("foo");
+        Response expectedResponse = Response.of("bar");
+        Cache<Request, Response> cacheStub = mock(Cache.class);
+        when(cacheStub.cached(request)).thenReturn(true);
+        when(cacheStub.get(request)).thenReturn(expectedResponse);
+        Server sut = new BasicServerWithCache(
+                cacheStub,   // STUB
+                req -> true, // STUB
+                req -> Response.of(req.getBody() + " anew") // FAKE OBJECT
+        );
+
+        Response r = sut.serve(request);
+
+        assertEquals(expectedResponse, r, "We expect the cached response and not the computed response.");
     }
 
     private static Response responseFor(Request r){

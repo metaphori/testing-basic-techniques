@@ -25,4 +25,11 @@ public class Request {
     public int hashCode() {
         return Objects.hash(body);
     }
+
+    @Override
+    public String toString() {
+        return "Request{" +
+                "body='" + body + '\'' +
+                '}';
+    }
 }
