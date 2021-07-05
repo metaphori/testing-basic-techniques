@@ -44,9 +44,9 @@ dependencies {
 
     testImplementation("org.mockito:mockito-core:3.+")
 
-    testImplementation("io.cucumber:cucumber-java:2.0.1")
+    testImplementation("io.cucumber:cucumber-java:5.7.0")
     // N.B.: Cucumber is based on JUnit 4. If you’re using JUnit 5, remember to include junit-vintage-engine dependency, as well.
-    testImplementation("io.cucumber:cucumber-junit:2.4.0") // needed for runner (cucumber.api.junit.Cucumber)
+    testImplementation("io.cucumber:cucumber-junit:5.7.0") // needed for runner (cucumber.api.junit.Cucumber)
 
     testImplementation("org.slf4j:slf4j-api:1.7.+")
     testRuntimeOnly("org.slf4j:slf4j-log4j12:1.7.+")
@@ -85,6 +85,18 @@ tasks.register("paramtests", Test::class) {
         val test = descriptor as org.gradle.api.internal.tasks.testing.TestDescriptorInternal
         println("${test.className} [${test.classDisplayName}] > ${test.name}\n${test.displayName}\n${result.resultType}")
     }))
+}
+
+configurations {
+    register("cucumberRuntime") {
+        extendsFrom(configurations["testImplementation"])
+    }
+}
+
+tasks.register<JavaExec>("cuke"){
+    main ="io.cucumber.core.cli.Main"
+    classpath(configurations["cucumberRuntime"] + sourceSets["main"].output + sourceSets["test"].output)
+    args("--plugin", "pretty", "--glue", "", "src/test/resources")
 }
 
 tasks.register("metatest", Test::class) {
