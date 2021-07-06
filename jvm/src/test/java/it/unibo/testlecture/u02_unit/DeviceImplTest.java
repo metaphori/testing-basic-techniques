@@ -20,6 +20,11 @@ public class DeviceImplTest {
     }
 
     @Test
+    public void test_starting_state_of_device(){
+        assertFalse(device.isOn(), "Device must be off, initially.");
+    }
+
+    @Test
     @Tags({ @Tag("basics"), @Tag("appliances") })
     public void test_turning_on_when_off() {
         assumeTrue(!device.isOn());
